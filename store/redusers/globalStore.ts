@@ -1,20 +1,19 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface GlobalStore {
-    isSearching: boolean;
+    searchingValue: string;
 }
 
-
 const initialState: GlobalStore = {
-    isSearching: false
+    searchingValue: ""
 };
 
 const globalStore = createSlice({
     name: "global",
     initialState,
     reducers: {
-        toggleIsSearching: (state: GlobalStore, action: PayloadAction<boolean>) => {
-            state.isSearching = action.payload;
+        setSearchingValue: (state: GlobalStore, action: PayloadAction<string>) => {
+            state.searchingValue = action.payload;
         }
     }
 });

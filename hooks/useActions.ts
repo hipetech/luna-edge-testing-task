@@ -6,7 +6,8 @@ const actions = {
     ...globalStore.actions
 };
 
-export const useActions = (): unknown => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useActions = (): any => {
     const dispatch = useAppDispatch();
     return bindActionCreators(actions, dispatch);
 };

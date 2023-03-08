@@ -1,0 +1,58 @@
+@tailwind components;
+@tailwind utilities;
+
+.centered {
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blob1, .blob2 {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blob1 {
+    left: 20%;
+    animation: osc-l 2s ease infinite;
+    @apply bg-error;
+}
+
+.blob2 {
+    left: 80%;
+    animation: osc-r 2s ease infinite;
+    @apply bg-primary;
+}
+
+@keyframes osc-l {
+    0% {
+        left: 20%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 20%;
+    }
+}
+
+@keyframes osc-r {
+    0% {
+        left: 80%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 80%;
+    }
+}
