@@ -1,10 +1,5 @@
-import {Movie} from "@/types/movie";
+import {MovieSearchResponse} from "@/types/movieSearchResponse";
 
-interface MovieSearchResponse {
-    Search: Movie[];
-}
-
-export async function getMoviesByName(url: string, name: string): Promise<Movie[]> {
-    const data: MovieSearchResponse = await fetch(url + `s=${name}`).then(res => res.json());
-    return data.Search;
+export async function getMoviesByName(url: string): Promise<MovieSearchResponse> {
+    return await fetch(url).then(res => res.json());
 }
