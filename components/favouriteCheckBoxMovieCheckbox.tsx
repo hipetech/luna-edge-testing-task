@@ -18,11 +18,11 @@ const FavouriteCheckBoxMovieCheckbox: React.FC<FavouriteCheckBoxMovieInterface> 
 
         if (!isFavorite) {
             localStorage.setItem(key, JSON.stringify([...arr, IMDbId]));
-            setIsFavorite(true);
         } else {
             localStorage.setItem(key, JSON.stringify(arr.filter((elem: string) => elem !== IMDbId)));
-            setIsFavorite(false);
         }
+
+        setIsFavorite(!isFavorite);
     }
 
     useEffect(() => {
