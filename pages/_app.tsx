@@ -13,6 +13,12 @@ const roboto = Roboto({weight: "400", subsets: ["latin"]});
 export default function App({Component, pageProps}: AppProps) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const LoadingItem = () => (
+        <div className={"w-full h-screen bg-transparent fixed absolute-center"}>
+            <Loading />
+        </div>
+    );
+
     useEffect(() => {
         Router.events.on("routeChangeStart", ()=>{
             setIsLoading(true);
@@ -28,12 +34,20 @@ export default function App({Component, pageProps}: AppProps) {
 
     }, []);
 
+    useEffect(() => {
+        if (isLoading) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [isLoading]);
+
     return (
         <Provider store={store}>
             <main className={roboto.className + " w-[75%] mx-auto"}>
                 <Component {...pageProps} />
             </main>
-            {isLoading && <div className={"w-screen h-screen bg-gray-700"}><Loading /></div>}
+            {isLoading && <LoadingItem />}
         </Provider>
     );
 }
