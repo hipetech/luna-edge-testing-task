@@ -16,8 +16,6 @@ const MovieItem: React.FC<MovieItemInterface> = ({movie}) => {
         return movie.Title;
     }
 
-
-
     return (
 
         <div

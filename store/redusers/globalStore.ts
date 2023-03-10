@@ -2,12 +2,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface GlobalStore {
     searchingValue: string;
+    favouritesLocalStorageKey: string;
     isOpenFavouriteDialog: boolean;
 }
 
 const initialState: GlobalStore = {
     searchingValue: "",
-    isOpenFavouriteDialog: false
+    isOpenFavouriteDialog: false,
+    favouritesLocalStorageKey: "favourites"
 };
 
 const globalStore = createSlice({

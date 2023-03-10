@@ -2,36 +2,37 @@ import React, {useEffect, useState} from "react";
 
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import {useAppSelector} from "@/hooks/useAppSelector";
 
 interface FavouriteCheckBoxMovieInterface {
     IMDbId: string;
 }
 
 const FavouriteCheckBoxMovieCheckbox: React.FC<FavouriteCheckBoxMovieInterface> = ({IMDbId}) => {
-    const key = "favourites";
+    const {favouritesLocalStorageKey} = useAppSelector(state => state.global);
 
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
     function onClick(): void {
-        const value = localStorage.getItem(key);
+        const value = localStorage.getItem(favouritesLocalStorageKey);
         const arr = value ? JSON.parse(value) : [];
 
         if (!isFavorite) {
-            localStorage.setItem(key, JSON.stringify([...arr, IMDbId]));
+            localStorage.setItem(favouritesLocalStorageKey, JSON.stringify([...arr, IMDbId]));
         } else {
-            localStorage.setItem(key, JSON.stringify(arr.filter((elem: string) => elem !== IMDbId)));
+            localStorage.setItem(favouritesLocalStorageKey, JSON.stringify(arr.filter((elem: string) => elem !== IMDbId)));
         }
 
         setIsFavorite(!isFavorite);
     }
 
     useEffect(() => {
-        const value = localStorage.getItem(key);
+        const value = localStorage.getItem(favouritesLocalStorageKey);
 
         if (value && JSON.parse(value).includes(IMDbId)) {
             setIsFavorite(true);
         }
-    }, [IMDbId]);
+    }, [IMDbId, favouritesLocalStorageKey]);
 
     return (
         <div

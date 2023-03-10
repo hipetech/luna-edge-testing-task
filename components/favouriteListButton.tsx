@@ -12,7 +12,7 @@ const FavouriteListButton = () => {
             variant="outlined"
             sx={{height: "100%"}}
             onClick={() => setIsOpenFavouriteDialog(true)}>
-            <StarBorderIcon sx={{marginRight: "5px"}}/> Favourites
+            <StarBorderIcon />
         </Button>
     );
 };

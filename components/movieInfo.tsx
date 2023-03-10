@@ -57,11 +57,21 @@ const MovieInfo: React.FC<MovieInfoInterface> = ({movie}) => {
         const day = formatNumber(releasedDate.getDate());
         const month = formatNumber(releasedDate.getMonth());
 
+        const date = `${day}.${month}.${releasedDate.getFullYear()}`;
+
+        const isDate = movie.Released === "N/A" ? "There is no released date" : date;
+
         return (
             <div className={"flex flex-row gap-x-2 items-center"}>
-                <p className={"border-2 rounded-[2px] p-1"}>{movie.Rated}</p>
-                <p>{`${day}.${month}.${releasedDate.getFullYear()}`}</p>
-                <p>{movie.Runtime}</p>
+                <p className={"border-2 rounded-[2px] p-1"}>
+                    {movie.Rated === "N/A" ? "There is no rate" : movie.Rated}
+                </p>
+                <p>
+                    {isDate}
+                </p>
+                <p>
+                    {movie.Runtime}
+                </p>
             </div>
         );
     };
@@ -82,7 +92,7 @@ const MovieInfo: React.FC<MovieInfoInterface> = ({movie}) => {
 
     const Awards = () => (
         <p className={"text-primary"}>
-            {movie.Awards}
+            {movie.Awards === "N/A" ? "There is no awards" : movie.Awards}
         </p>
     );
 
