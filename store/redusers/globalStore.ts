@@ -9,7 +9,7 @@ export interface GlobalStore {
 const initialState: GlobalStore = {
     searchingValue: "",
     isOpenFavouriteDialog: false,
-    favouritesLocalStorageKey: "favourites"
+    favouritesLocalStorageKey: "favourites",
 };
 
 const globalStore = createSlice({
