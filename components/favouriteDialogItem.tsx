@@ -17,7 +17,7 @@ const FavouriteDialogItem: React.FC<FavouriteDialogItemInterface> = ({IMDbId}) =
     const height = 300;
 
     function renderFavouriteDialogItem(): JSX.Element {
-        if (isLoading) return <Skeleton variant="rectangular" width={width} height={height} />;
+        if (isLoading) return <Skeleton variant="rectangular" width={width} height={height} animation={"wave"}/>;
         return (
             <Link href={`/${IMDbId}`} className={"hover:drop-shadow-lg"}>
                 <Poster poster={data?.Poster ?? ""} width={`${width}px`} height={`${height}px`}/>
