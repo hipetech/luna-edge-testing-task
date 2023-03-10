@@ -1,27 +1,31 @@
 import React from "react";
 import {MovieType} from "@/types/movieType";
+import {Chip} from "@mui/material";
 
 interface MovieLabelTypeInterface {
     movieType: MovieType;
 }
 
 const MovieLabelType: React.FC<MovieLabelTypeInterface> = ({movieType}) => {
-
-    function switchLabelColor(): string {
+    function switchLabelColor() {
         switch (movieType) {
             case MovieType.series:
-                return "bg-error";
+                return "error";
             case MovieType.episode:
-                return "bg-success";
+                return "success";
             default:
-                return "bg-primary";
+                return "primary";
         }
     }
 
     return (
-        <div className={switchLabelColor() + " w-min rounded-full px-2 text-white drop-shadow-lg"}>
-            {movieType.charAt(0).toUpperCase() + movieType.slice(1)}
-        </div>
+        <Chip
+            color={switchLabelColor()}
+            label={movieType.charAt(0).toUpperCase() + movieType.slice(1)}
+            sx={{
+                fontSize: "15px"
+            }}
+        />
     );
 };
 
