@@ -7,9 +7,9 @@
 2. After installing, you have to rename .env.example to .env and insert you API key from http://www.omdbapi.com
 3. Build your project with
 ```
-    next build
+    npm run build
 ```
 4. Start your project with
 ```
-    next start
+    npm run start
 ```
